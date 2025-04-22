@@ -25,9 +25,6 @@
                                 <th scope="col">property  price</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
-
-
-
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +35,7 @@
                                 <td>{{$property->location}}</td>
                                 <td>{{$property->price}}</td>
                                 <td>{{$property->is_active}}</td>
+                                {{-- updating status logic --}}
                                 <td>
                                     @if($property->is_active =='active')
                                         <form action="{{route('deleteproperty')}}"  method='post'>
@@ -57,17 +55,15 @@
                                 </form>
                                     @endif
                                 </td>
-
+                                {{-- logic ends --}}
                             </tr>
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-
+        {{-- propery update by admin --}}
         <div class="col-md-8 offset-md-2 shadow-lg rounded rounded-5">
             @if($errors->any())
             @foreach($errors->all() as $err)
@@ -131,14 +127,11 @@
                 <p class='text-center mt-2'><button class='btn  btn-success'>update</button></p>
             </form>
         </div>
-
-
-
     </div>
-
 </div>
-
+{{-- update ends --}}
 @endsection
+{{-- table functionality starts --}}
 <script src="/jquery-3.7.1.min.js"></script>
 <script>
     $(document).ready(function(){

@@ -1,19 +1,22 @@
 @extends('layout')
 @section('header')
 <div class="container-fluid header bg-white p-0">
+    {{-- hero section --}}
     <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
         <div class="col-md-6 p-5 mt-lg-5">
             <h1 class="display-5 animated fadeIn mb-4">Property Details</h1>
             <p class='fw-bold'>Unlock Your Land Potential with Geolife.
-                Find exceptional land listings in all states to build your dreams, invest wisely, and secure your future.</p>
-
+                Find exceptional land listings in all states to build your dreams, invest wisely, and secure your future.
+            </p>
         </div>
         <div class="col-md-6 animated fadeIn">
             <img class="img-fluid" src="/img/land20.png" alt="">
         </div>
     </div>
 </div>
+{{-- hero section ends --}}
 @endsection
+
 @section('call_to_action')
 <div class="container-xxl py-5">
     <div class="container">
@@ -64,7 +67,7 @@
 
                         <p class='small text-danger'>please click the button and drop a message if interested. Do well to check your dashboard you'll be contacted shortly</p>
                         <button class="btn btn-primary py-3 px-4 me-2" id='trigger'><i class="fa fa-phone-alt me-2"></i>interested</button>
-
+                                {{-- interest section --}}
                         <div id='hide' class='mt-3 ' style='display:none'>
                             <div>
                                 <form action="{{route('user.interest')}}" method="post">

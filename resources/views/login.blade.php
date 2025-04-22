@@ -7,21 +7,25 @@
         <div class="bg-light rounded p-3">
             <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
                 <div class="row ">
+                    {{-- login image --}}
                     <div class="col-lg-6 mt-md-5 wow fadeIn" data-wow-delay="0.1s">
                         <img class="img-fluid rounded" width='100%' height='100%'src="img/call-to-action.jpg" alt="">
                     </div>
+                    {{-- image ends --}}
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                         <h4 class='text-center'>Login</h4>
+                        {{-- flash sesssion --}}
                         @if(session('regsuccess'))
                             <p class="alert alert-success">{{session('regsuccess')}}</p>
                         @endif
                         @if(session('regfailure'))
                         <p class="alert alert-danger">{{session('regfailure')}}</p>
                         @endif
+                        {{-- end flash session --}}
 
+                        {{-- form begins --}}
                         <form action='{{route('login.store')}}' method='post'>
                             @csrf
-
                             <div class='row mb-3 mt-3'>
                                 <div class=" col-md-12 mb-4">
                                     <div class="form-floating ">
@@ -48,6 +52,7 @@
                                 </div>
                             </div>
                         </form>
+                        {{-- form ends --}}
                     </div>
                 </div>
             </div>

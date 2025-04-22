@@ -18,8 +18,8 @@
                         @enderror
                     </div>
                 </div>
+                {{-- reply section --}}
                 <div class="row g-5 align-items-center">
-                        {{-- {{dd($message->property->image)}} --}}
                     <div class="col-md-6 " >
                         <label>Property Image</label>
                         <img class="img-fluid rounded w-100" src="{{asset('uploads/'.$message->property->image)}}" alt="">
@@ -61,9 +61,8 @@
                                     <textarea class='form-control' readonly rows="5" >{{$message->message}}</textarea>
                                 </div>
                             </div>
-
-                            {{-- <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit diam justo sed vero dolor duo.</p> --}}
                         </div>
+                        {{-- reply text area starts --}}
                         <div>
                             <form action="{{route('sendReply.Msg')}}" method='post'>
                                 @csrf
@@ -80,12 +79,15 @@
                                     <p class='text-center mt-2'><button class="btn btn-dark rounded-0 py-3 px-4">Reply</button></p>
                                 </div>
                             </form>
-
                         </div>
+                        {{-- reply text area ends --}}
 
 
                     </div>
                 </div>
+                {{-- reply section ends --}}
+
+                {{-- edit reply section starts --}}
                 <div class="row mt-md-4">
                     <div class="col-md-7 bg-dark shadow rounded-5 offset-md-2">
                         <h4 class='text-center m-3 text-light'>Edit reply</h4>
@@ -95,11 +97,7 @@
                         @if(session('editerror'))
                         <p class='alert alert-danger'>{{session('editerror')}}</p>
                         @endif
-                        {{-- @if($errors->any())
-                            @foreach($errors->all() as $err)
-                            <p>{{$err}}</p>
-                            @endforeach
-                        @endif --}}
+
                         <form action="{{route('editReply')}}" method='post'>
                             @method('put')
                             @csrf
@@ -121,6 +119,7 @@
                         </form>
                     </div>
                 </div>
+                {{-- edit reply section ends --}}
             </div>
         </div>
     </div>

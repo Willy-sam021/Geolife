@@ -22,6 +22,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{-- Looping of properties --}}
                             @foreach($property as $prop)
                             <tr>
                                 <td></td>
@@ -32,6 +33,7 @@
                                 <td><a href="{{route('propertyDeets',['id'=>$prop->id])}}" class='btn btn-primary'>more</a></td>
                             </tr>
                             @endforeach
+                            {{-- looping ends --}}
                         </tbody>
                     </table>
                 </div>
@@ -41,6 +43,7 @@
 </div>
 
 @endsection
+{{-- Table javascript functionality --}}
 <script src="/jquery-3.7.1.min.js"></script>
 <script>
     $(document).ready(function(){

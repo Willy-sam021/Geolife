@@ -14,9 +14,10 @@
                         </div>
                     </div>
 
-                    {{-- {{dd($message)}} --}}
+                    
 
                     <div class="row">
+                        {{-- loop starts --}}
                         @foreach($message as $msg)
                         <div class='col'>
                             <div class="h-100 bg-light rounded p-4">
@@ -44,6 +45,7 @@
                         </div>
 
                         @endforeach
+                        {{-- Loop ends --}}
                     </div>
                 </div>
             </div>

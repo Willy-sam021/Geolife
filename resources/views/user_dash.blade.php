@@ -22,7 +22,7 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            {{-- loop starts --}}
                             @foreach($usermsg as $user)
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
@@ -38,6 +38,7 @@
 
                             </tr>
                             @endforeach
+                            {{-- loop ends --}}
 
                         </tbody>
                     </table>

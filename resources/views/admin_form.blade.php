@@ -8,19 +8,18 @@
 
             <div class="bg-light rounded h-100 p-4">
 
-                {{-- {{dd($allstates)}} --}}
+
                 <h6 class="mb-4 text-center">Add new property</h6>
+                {{-- checking for flash messages --}}
                 @if(session('success'))
                 <p class='alert alert-success'>{{session('success')}}</p>
                 @endif
                 @if(session('error'))
                 <p class='alert alert-danger'>{{session('success')}}</p>
                 @endif
-                @if($errors->any())
-                @foreach($errors->all() as $error)
-                <p>{{$error}}</p>
-                @endforeach
-                @endif
+                {{-- checking ends --}}
+
+                {{-- form starts --}}
                 <form action="{{route('admin.form')}}" method='post' enctype='multipart/form-data'>
                     @csrf
                     <div class="form-floating mb-3">
@@ -90,6 +89,7 @@
                         <p class='text-center'><button class='btn col-6 btn-outline-warning btn-success mt-3'>Add</button></p>
                     </div>
                 </form>
+                {{-- form ends --}}
             </div>
         </div>
     </div>

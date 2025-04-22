@@ -1,6 +1,5 @@
 @extends ('layout')
 
-
 @section('call_to_action')
 <div class="container-xxl py-5">
     <div class="container">
