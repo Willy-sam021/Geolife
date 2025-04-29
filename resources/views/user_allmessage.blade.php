@@ -6,7 +6,7 @@
     <div class="row g-4" style='min-height:500px'>
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">All interested properties</h6>
+                <h6 class="mb-4">All Messages</h6>
                 <div class="table-responsive">
                     <table class="table" id='dashtable'>
                         <thead>
@@ -15,12 +15,13 @@
                                 <th scope="col">Property Name</th>
                                 <th scope="col">Property image</th>
                                 <th scope="col">property location</th>
-                                <th scope="col">Action</th>
-
+                                <th scope="col">Message sent</th>
+                                <th scope="col">Time sent</th>
+                                <th scope="col">Reply</th>
+                                <th scope="col">time replied</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- {{dd($usermsg)}} --}}
                             {{-- loop starts --}}
                             @foreach($usermsg as $user)
                             {{-- {{dd($usermsg)}} --}}
@@ -29,7 +30,26 @@
                                 <td>{{$user->property->name}}</td>
                                 <td><img src="{{asset('uploads/'.$user->property->image)}}" width='100px' alt=""></td>
                                 <td>{{$user->property->location}}</td>
-                                <td><br><a href="{{route('userAllMsg',["id"=>$user->property->id])}}" class='btn btn-success'>View more</a></td>
+                                <td>{{$user->message}} <br></td>
+                                <td>{{date('d/F/Y H:i:s a',strtotime($user->updated_at))}}</td>
+
+                                <td>
+                                    <div class="row">
+                                        <div class="col">
+                                            @foreach($user->reply as $rep)
+                                            <p>{{$rep->content}}</p>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                <td>
+                                    <div class="row">
+                                        <div class="col">
+                                            @foreach($user->reply as $rep)
+                                            <p>{{date('d/F/Y H:i:s a',strtotime($rep->updated_at))}}</p>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </td>
 
 
                             </tr>
@@ -41,6 +61,12 @@
 
                 </div>
             </div>
+
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <a href="{{route('updateReply',["id"=>$user->id])}}" class='btn btn-success'>send message</a>
         </div>
     </div>
 

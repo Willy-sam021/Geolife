@@ -73,9 +73,9 @@
                             <div class="property-item rounded overflow-hidden">
                                 <div class="position-relative overflow-hidden">
                                     @if(auth()->check())
-                                    <a href="{{route('propdeets',['id'=>$prop->id])}}"><img class="img-fluid" src="{{asset('./uploads/'.$prop->image)}}" alt=""></a>
+                                    <a href="{{route('propdeets',['id'=>$prop->id])}}"><img class='img-fluid' src="{{asset('./uploads/'.$prop->image)}}" alt=""></a>
                                     @else
-                                    <img class="img-fluid" src="{{asset('./uploads/'.$prop->image)}}"  alt="">
+                                    <img class="img-fluid " src="{{asset('./uploads/'.$prop->image)}}"  alt="">
                                     @endif
                                     <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
 

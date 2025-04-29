@@ -31,12 +31,6 @@
                             @error('message')
                             <p class='text-danger'>{{$message}}</p>
                             @enderror
-                           @if(session('success'))
-                           <p class='alert alert-success'>{{session('success')}}</p>
-                           @endif
-                           @if(session('error'))
-                           <p class='alert alert-danger'>{{session('error')}}</p>
-                           @endif
 
                                 <form>
                                     <div class='mb-2'>
@@ -65,14 +59,25 @@
 
                                 </form>
 
-                        <p class='small text-danger'>please click the button and drop a message if interested. Do well to check your dashboard you'll be contacted shortly</p>
+                        <p class='small text-danger'>Please click the button and drop a message if interested,stating if you agree with the price or not. Also do well to check your dashboard you'll be contacted shortly</p>
                         <button class="btn btn-primary py-3 px-4 me-2" id='trigger'><i class="fa fa-phone-alt me-2"></i>interested</button>
-                                {{-- interest section --}}
+                    </div>
+                </div>
+                 {{-- interest section --}}
+                <div class="row mt-1">
+                    <div class="col">
+                        @if(session('success'))
+                        <p class='alert alert-success'>{{session('success')}}</p>
+                        @endif
+                        @if(session('error'))
+                        <p class='alert alert-danger'>{{session('error')}}</p>
+                        @endif
+
                         <div id='hide' class='mt-3 ' style='display:none'>
                             <div>
                                 <form action="{{route('user.interest')}}" method="post">
                                 @csrf
-                                    <textarea name="message" id="" cols="5"  class='form-control'rows="5"></textarea>
+                                    <textarea name="message" id="" cols="5"  class='form-control border border-dark border-3' rows="5"></textarea>
                                     <input type="hidden" name='userid' value='{{auth()->user()->id}}'>
                                     <input type="hidden" name='propertyid' value="{{$details->id}}">
                                     <p class='text-center'><button class='btn btn-primary mt-2 p-3 col-4'  id='trigger2'>Send</button></p>

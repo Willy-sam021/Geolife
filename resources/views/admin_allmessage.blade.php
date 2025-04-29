@@ -1,37 +1,38 @@
-@extends('userdashboard/dash_layout')
+@extends('adminfile/adminlayout')
 
-@section('table')
+@section('content')
 {{-- {{dd($usermsg)}} --}}
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4" style='min-height:500px'>
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">All interested properties</h6>
+                <h6 class="mb-4">All Messages</h6>
                 <div class="table-responsive">
                     <table class="table" id='dashtable'>
+                         {{-- {{dd($allmsg)}}  --}}
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Property Name</th>
                                 <th scope="col">Property image</th>
                                 <th scope="col">property location</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">action</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- {{dd($usermsg)}} --}}
                             {{-- loop starts --}}
-                            @foreach($usermsg as $user)
-                            {{-- {{dd($usermsg)}} --}}
+                            @foreach($allmsg as $user)
+                            {{-- {{dd($allmsg)}} --}}
                             <tr>
+                                {{-- {{dd($allmsg)}} --}}
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$user->property->name}}</td>
                                 <td><img src="{{asset('uploads/'.$user->property->image)}}" width='100px' alt=""></td>
                                 <td>{{$user->property->location}}</td>
-                                <td><br><a href="{{route('userAllMsg',["id"=>$user->property->id])}}" class='btn btn-success'>View more</a></td>
+                                {{-- {{dd($allmsg)}} --}}
 
-
+                                <td><a href="{{route('admin_view.Msg',["propid"=>$user->property->id])}}" class='btn btn-success'>view message</a></td>
                             </tr>
                             @endforeach
                             {{-- loop ends --}}
@@ -41,6 +42,12 @@
 
                 </div>
             </div>
+
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+
         </div>
     </div>
 

@@ -6,8 +6,10 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2"></p>
-                    <h6 class="mb-0"></h6>
+                    <p class="mb-2">All Users</p>
+                    <h6 class="mb-0"><?php echo count($allusers)?></h6>
+
+
                 </div>
             </div>
         </div>
@@ -15,8 +17,8 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2"></p>
-                    <h6 class="mb-0"></h6>
+                    <p class="mb-2">Active users</p>
+                    <h6 class="mb-0">{{(count($active))}}</h6>
                 </div>
             </div>
         </div>
@@ -24,8 +26,8 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2"></p>
-                    <h6 class="mb-0"></h6>
+                    <p class="mb-2">All properties</p>
+                    <h6 class="mb-0">{{count($prop)}}</h6>
                 </div>
             </div>
         </div>
@@ -33,8 +35,9 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2"></p>
-                    <h6 class="mb-0"></h6>
+                    <p class="mb-2">Total messages received</p>
+                    <h6 class="mb-0">{{count($msg)}}</h6>
+                    {{-- {{dd($msg)}} --}}
                 </div>
             </div>
         </div>

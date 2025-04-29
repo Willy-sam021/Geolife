@@ -17,7 +17,10 @@ class AdminController extends Controller
 {
     public function show(){
         $user=User::where('role','user')->get();
-        return view('admin',['allusers'=>$user]);
+        $allactive=User::where('is_deleted',false)->where('role','user')->get();
+        $prop=Property::where('is_active','active')->get();
+        $msg=Message::all();
+        return view('admin',['allusers'=>$user, 'active'=>$allactive, "prop"=>$prop, "msg"=>$msg]);
     }
 
     public function showForm(){
@@ -78,10 +81,29 @@ class AdminController extends Controller
 
 
     public function showMessage(){
-        $message=Message::all();
-
-        return view('admin_message',['message'=>$message]);
+       // $message=Message::all();
+       $msg=Message::distinct()->select('user_id')->get();
+        return view('admin_message',['message'=>$msg]);
     }
+    public function adminallmsg($id){
+        // dd($id);
+        $msg=Message::distinct()->select('property_id')->where('user_id',$id)->get();
+
+        return view('admin_allmessage',['allmsg'=>$msg]);
+    }
+
+    public function adminviewmsg($propid){
+
+        $msg=Message::distinct()->select('user_id','property_id')->where('property_id',$propid)->get();
+        return view('admin_viewuser_msg',["usermsg"=>$msg]);
+    }
+
+
+    public function admin_see($id,$propid){
+        $msg=Message::where('user_id',$id)->where('property_id',$propid)->get();
+        return view('admin_see',["message"=>$msg]);
+    }
+
 
     public function replyMsg($id){
         $msgid=Message::findOrFail($id);

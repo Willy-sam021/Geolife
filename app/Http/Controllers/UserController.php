@@ -14,7 +14,8 @@ class UserController extends Controller
     public function userdash(){
       $userid= auth()->user()->id;
     //   dd($userid);
-      $msg=Message::where('user_id',$userid)->get();
+    //    $msg=Message::where('user_id',$userid)->get();
+     $msg=Message::distinct()->select('property_id')->where('user_id',$userid)->get();
 
 
         return view('user_dash',['usermsg'=>$msg]);
@@ -23,6 +24,14 @@ class UserController extends Controller
     public function userProfile(){
         return view('user_profile');
 
+    }
+
+    public function userallmsg($id){
+        // dd($id);
+        $userid= auth()->user()->id;
+      $msg=Message::where('property_id',$id)->where('user_id',$userid)->get();
+
+      return view('user_allmessage',['usermsg'=>$msg]);
     }
 
     public function userUpdate(Request $request){
@@ -58,19 +67,25 @@ class UserController extends Controller
 
         $request->validate([
             "editreply"=>"required",
-             "messageid"=>"required"
+             "messageid"=>"required",
+             "propid"=>"required"
         ],
         [
             "editreply.required"=>"please type a reply",
 
         ]);
 
-
+        // dd($request->propid);
         $editreply= Str::of($request->editreply)->stripTags()->lower()->toHtmlString();
+        $propid= Str::of($request->propid)->stripTags()->lower()->toHtmlString();
         $messageid= Str::of($request->messageid)->stripTags()->lower()->toHtmlString();
+        $userid= auth()->user()->id;
+        $reply= new Message;
+        // ::where('id',$messageid)->first();
 
-        $reply=Message::where('id',$messageid)->first();
 
+        $reply->user_id=$userid;
+        $reply->property_id=$propid;
         $reply->message=$editreply;
         $reply->created_at=time();
 

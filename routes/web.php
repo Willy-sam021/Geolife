@@ -48,4 +48,9 @@ Route::get('/user/edit/reply/{id}',[UserController::class,'updateReply'])->name(
 Route::put('/admin/deletebuyer',[AdminController::class,'deletebuyer'])->name('deletebuyer');
 Route::put('/admin/deleteproperty',[AdminController::class,'deleteproperty'])->name('deleteproperty');
 
+Route::get('/user/allmessage/{id}',[UserController::class,'userallmsg'])->name('userAllMsg');
+Route::get('/admin/allmessage/{id}',[AdminController::class,'adminallmsg'])->name('adminAllMsg');
+Route::get('/admin/viewmsg/{propid}',[AdminController::class,'adminviewmsg'])->name('admin_view.Msg');
+Route::get('/admin/see/{id}/{propid}',[AdminController::class,'admin_see'])->name('admin_see');
+
 //Route::get('/lgaprocess',[LgaController::class,'lgaprocess']);

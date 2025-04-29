@@ -6,7 +6,7 @@
 
     <div class="row mt-md-4" >
         <div class="col-md-7 bg-dark shadow rounded-5 offset-md-2">
-            <h4 class='text-center m-3 text-light'>Edit reply</h4>
+            <h4 class='text-center m-3 text-light'>Last Message</h4>
             @if(session('editsuccess'))
             <p class='alert alert-success'>{{session('editsuccess')}}</p>
             @endif
@@ -23,6 +23,8 @@
                         <textarea name="editreply" id="" cols="3" class='form-control' rows="5">{{$user->message}}</textarea>
                      </div>
                     <input type="hidden" value='{{$user->id}}' name="messageid">
+                    <input type="hidden" value='{{$user->property->id}}' name="propid">
+
                     @error('editreply')
                     <p class='text-danger'>{{$message}}</p>
                     @enderror

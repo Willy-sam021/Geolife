@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>@yield('title')</title>
+    <title>@yield('title','Geolife')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -63,7 +63,7 @@
 
                     <a href="{{route('admin.viewform')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Add New Property</a>
                     <a href="{{route('allmessages')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Messages</a>
-                    <a href="{{route('allproducts')}}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>All products</a>
+                    <a href="{{route('allproducts')}}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>All properties</a>
 
 
                 </div>
@@ -88,7 +88,7 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                
+
                 <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
             </nav>
             <!-- Navbar End -->

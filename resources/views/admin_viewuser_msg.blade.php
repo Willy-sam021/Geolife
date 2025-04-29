@@ -1,37 +1,42 @@
-@extends('userdashboard/dash_layout')
+@extends('adminfile.adminlayout')
 
-@section('table')
+@section('content')
 {{-- {{dd($usermsg)}} --}}
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4" style='min-height:500px'>
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">All interested properties</h6>
+                <h6 class="mb-4">All Messages</h6>
                 <div class="table-responsive">
                     <table class="table" id='dashtable'>
+                         {{-- {{dd($usermsg)}} --}}
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Property Name</th>
-                                <th scope="col">Property image</th>
-                                <th scope="col">property location</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">prospective buyer</th>
+                                <th scope="col">phone number</th>
+                                <th scope="col">address</th>
+
+
+                                <th scope="col">action</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- {{dd($usermsg)}} --}}
                             {{-- loop starts --}}
                             @foreach($usermsg as $user)
                             {{-- {{dd($usermsg)}} --}}
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
-                                <td>{{$user->property->name}}</td>
-                                <td><img src="{{asset('uploads/'.$user->property->image)}}" width='100px' alt=""></td>
-                                <td>{{$user->property->location}}</td>
-                                <td><br><a href="{{route('userAllMsg',["id"=>$user->property->id])}}" class='btn btn-success'>View more</a></td>
+                                <td>{{$user->user->firstname}}   {{$user->user->lastname}}</td>
+                                <td>{{$user->user->phone}}</td>
 
 
+                                <td>{{$user->user->address}}</td>
+
+                                {{-- {{dd($user->user->id)}} --}}
+
+                                <td><a href='{{route('admin_see',["id"=>$user->user->id, "propid"=>$user->property->id])}}' class='btn btn-success'>view message</a></td>
                             </tr>
                             @endforeach
                             {{-- loop ends --}}
@@ -41,6 +46,12 @@
 
                 </div>
             </div>
+
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+
         </div>
     </div>
 
@@ -52,6 +63,7 @@
 <script src="/jquery-3.7.1.min.js"></script>
 <script>
     $(document).ready(function(){
+
         let table = new DataTable('#dashtable');
     })
 </script>

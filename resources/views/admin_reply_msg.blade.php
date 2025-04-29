@@ -6,7 +6,7 @@
             <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
                 <div class="row">
                     <div class="col">
-                        <h1 class='text-center'>send reply</h1>
+                        <h3 class='text-center'>Send Your Reply</h3>
                         @if(session('success'))
                         <p class='alert alert-success'>{{session('success')}}</p>
                         @endif
@@ -20,11 +20,11 @@
                 </div>
                 {{-- reply section --}}
                 <div class="row g-5 align-items-center">
-                    <div class="col-md-6 " >
-                        <label>Property Image</label>
+                    <div class="col-md-5 " >
+
                         <img class="img-fluid rounded w-100" src="{{asset('uploads/'.$message->property->image)}}" alt="">
                     </div>
-                    <div class="col-md-6  shadow">
+                    <div class="col-md-7 ">
 
                         <div class="mb-4">
                             <div class="row">
@@ -62,12 +62,18 @@
                                 </div>
                             </div>
                         </div>
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col shadow">
                         {{-- reply text area starts --}}
                         <div>
                             <form action="{{route('sendReply.Msg')}}" method='post'>
                                 @csrf
                                 <div>
-                                    <p class='text-danger'>type your reply here</p>
+                                    <p class='text-danger'>Type your reply here</p>
                                     <textarea name="reply" id="reply" cols="3" rows="5" class='form-control'></textarea>
                                 @error('reply')
                                 <p class='text-danger'>{{$message}}</p>
@@ -76,12 +82,11 @@
                                      <input type="hidden" value='{{$message->id}}' name='messageid'>
                                 <div>
 
-                                    <p class='text-center mt-2'><button class="btn btn-dark rounded-0 py-3 px-4">Reply</button></p>
+                                    <p class='text-center mt-2'><button class="btn btn-success rounded-0 py-3 px-4">Reply</button></p>
                                 </div>
                             </form>
                         </div>
                         {{-- reply text area ends --}}
-
 
                     </div>
                 </div>

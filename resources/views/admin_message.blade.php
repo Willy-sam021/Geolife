@@ -3,8 +3,8 @@
 <div class="container">
     <div class="row">
         <div class="container-fluid pt-4 px-4">
-            <div class="row g-4" style='min-height:500px'>
-                <div class="col-sm-12 col-md-6 ">
+            <div class="row  g-4" style='min-height:500px'>
+                <div class="col ">
                     <div class="row">
                         <div class="col">
                             <div class=" mb-2">
@@ -14,12 +14,14 @@
                         </div>
                     </div>
 
-                    
 
-                    <div class="row">
+                    <div class="row ">
                         {{-- loop starts --}}
-                        @foreach($message as $msg)
-                        <div class='col'>
+                         @foreach($message as $msg)
+                         @if($msg->user->is_deleted == true)
+                            @continue
+                         @endif
+                        <div class='col-md-3 mt-2'>
                             <div class="h-100 bg-light rounded p-4">
                                 <div class="d-flex align-items-center border-bottom py-3">
                                     {{-- <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;"> --}}
@@ -27,25 +29,25 @@
                                         <hr color='red' size='5'>
                                         <div class="d-flex w-100 justify-content-between  mb-2">
                                             <h6 class="mb-0"></h6>
-                                            <small >{{ date('d-F-Y H:i:s a',strtotime($msg->created_at))}}</small>
+                                            {{-- <small >{{ date('d-F-Y H:i:s a',strtotime($message->property->created_at))}}</small> --}}
 
                                         </div>
+                                        {{-- {{dd($msg->message)}} --}}
 
                                         <h6>{{$msg->user->firstname}} {{$msg->user->lastname}}</h6>
-                                        <span>{{$msg->message}}</span>
-                                        <p class='text-end mt-1'><a href="{{route('reply.Msg',['id'=>$msg->id])}}"class='btn btn-success btn-sm m-2'>Reply</a></p>
+
+
+                                        <p class='text-end mt-1'><a href="{{route('adminAllMsg',['id'=>$msg->user->id])}}"class='btn btn-success btn-sm m-2'>view</a></p>
                                         <hr color='red' size='5'>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-
-                            </div>
                             <hr color='red' size='5'>
                         </div>
 
-                        @endforeach
-                        {{-- Loop ends --}}
+                     @endforeach
+
+                     {{-- Loop ends --}}
                     </div>
                 </div>
             </div>
