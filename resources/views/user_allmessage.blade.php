@@ -24,7 +24,7 @@
                         <tbody>
                             {{-- loop starts --}}
                             @foreach($usermsg as $user)
-                            {{-- {{dd($usermsg)}} --}}
+                            
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$user->property->name}}</td>

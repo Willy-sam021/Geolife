@@ -12,9 +12,11 @@
             <p class='alert alert-danger'>{{session('error')}}</p>
             @endif
             <div>
+                {{-- profile form --}}
                 <form action="{{route('userUpdate')}}" method='post'>
                     @method('put')
                     @csrf
+                    {{-- firstname field --}}
                     <div class="row mt-3">
                         <div class="col-md-6 ">
                             <div class='form-floating'>
@@ -25,6 +27,7 @@
                              <p class='text-danger'>{{$message}}</p>
                              @enderror
                         </div>
+                        {{-- lastname field --}}
                         <div class="col-md-6">
                             <div class='form-floating'>
                                 <input type="text" name='lastname'  class='form-control'value='{{auth()->user()->lastname}}'>
@@ -35,6 +38,7 @@
                              @enderror
                         </div>
                     </div>
+                    {{-- phone field --}}
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <div class='form-floating'>
@@ -45,6 +49,7 @@
                              <p class='text-danger'>{{$message}}</p>
                              @enderror
                         </div>
+                        {{-- address field --}}
                         <div class="col-md-6">
                             <div class='form-floating'>
                                 <input type="text" name='address'  class='form-control'value='{{auth()->user()->address}}'>

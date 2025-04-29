@@ -17,9 +17,10 @@
                         @if(session('regfailure'))
                         <p class="alert alert-danger">{{session('regfailure')}}</p>
                         @endif
-
+                        {{-- form starts --}}
                         <form action='{{route('register.store')}}' method='post'>
                             @csrf
+                            {{-- firstname field --}}
                             <div class='row mb-3 mt-3'>
                                 <div class=" col-md-6">
                                     <div class="form-floating ">
@@ -30,6 +31,7 @@
                                     @enderror
                                     </div>
                                </div>
+                               {{-- lastname field --}}
                                <div class="col-md-6">
                                     <div class="form-floating ">
                                         <input type="text" class="form-control" value="{{old('lname')}}" name='lname' id="lname" placeholder="last name">
@@ -40,6 +42,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- email field --}}
                             <div class='row mb-3'>
                                 <div class=" col-md-6">
                                     <div class="form-floating ">
@@ -50,6 +53,7 @@
                                     @enderror
                                     </div>
                                </div>
+                               {{-- phone field --}}
                                <div class="col-md-6">
                                     <div class="form-floating ">
                                         <input type="text" class="form-control" value="{{old('phone')}}" name='phone' id="phone" placeholder="Phone">
@@ -60,6 +64,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- addres field --}}
                             <div class="row  mb-3">
                                 <div class="form-group col-md-12">
                                     <div class='form-floating'>
@@ -71,7 +76,7 @@
                                     </div>
                                  </div>
                             </div>
-
+                            {{-- password field --}}
 
                             <div class='row mb-3'>
                                 <div class=" col-md-6">
@@ -84,6 +89,7 @@
                                     @enderror
                                     </div>
                                </div>
+                               {{-- confirm password field --}}
                                <div class="col-md-6">
                                     <div class="form-floating ">
                                         <input type="password" class="form-control" name='password_confirmation' id="pass2" placeholder="confirm password">
